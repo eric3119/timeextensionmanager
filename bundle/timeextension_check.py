@@ -158,7 +158,11 @@ def agendar_desligar_fora_do_horario(desligar_fora_do_horario):
 
 
 def subprocess_run(args):
-    return subprocess.run(args, text=True)
+    subprocess = subprocess.run(args, text=True)
+    if subprocess.returncode != 0:
+        print(subprocess.stderr)
+        raise Exception(subprocess.stderr)
+    return subprocess
 
 
 def datetime_now():
