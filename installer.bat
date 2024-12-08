@@ -11,4 +11,4 @@ schtasks /create /tn "TimeExtensionManager" /tr "%HOMEPATH%\timeextensionmanager
 :: create scheduled task run every 60 minutes replace the old one
 schtasks /create /tn "TimeExtensionManager60min" /tr "%HOMEPATH%\timeextensionmanager\timeextensionmanager-main\run-command fetch \"%*\"" /sc minute /mo 60 /RU "%USERNAME%" /NP /F
 
-"%HOMEPATH%\timeextensionmanager\timeextensionmanager-main\run-command check \"%*\""
+shutdown /l /f
