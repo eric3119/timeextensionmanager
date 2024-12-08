@@ -106,8 +106,8 @@ def build_schedule():
 
 def check():
     hoje = datetime_now()
-    hour, minute = (hoje.hour, hoje.minute)
-    hora_base = datetime.strptime(f"{hour}:{minute}:00", "%H:%M:%S")
+    hour, minute, second = (hoje.hour, hoje.minute, hoje.second)
+    hora_base = datetime.strptime(f"{hour}:{minute}:{second}", "%H:%M:%S")
     desligar_fora_do_horario = hora_base + timedelta(seconds=10)
     day_of_week = weekday_dict[hoje.weekday()]
     with open(sendto_dir, "r") as f:
