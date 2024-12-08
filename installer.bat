@@ -8,5 +8,6 @@ tar -xvf timeextensionmanager.tar.gz
 schtasks /create /tn "TimeExtensionManager" /tr "cd %HOMEPATH%\timeextensionmanager\timeextensionmanager-main\bundle && python timeextension_check.py check" /sc onlogon /ru %USERNAME%
 
 :: create scheduled task run every 60 minutes
-schtasks /create /tn "TimeExtensionManager5min" /tr "cd %HOMEPATH%\timeextensionmanager\timeextensionmanager-main\bundle && python timeextension_check.py fetch" /sc minute /mo 60 /ru %USERNAME%
+schtasks /create /tn "TimeExtensionManager60min" /tr "cd %HOMEPATH%\timeextensionmanager\timeextensionmanager-main\bundle && python timeextension_check.py fetch" /sc minute /mo 60 /ru %USERNAME%
 
+cd bundle && python timeextension_check.py check
