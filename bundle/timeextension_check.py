@@ -97,7 +97,7 @@ def build_schedule():
                     "/st",
                     f"{str(hora_fim.hour).zfill(2)}:{str(hora_fim.minute).zfill(2)}",
                     "/ru",
-                    '"{username}"',
+                    f'"{username}"',
                     "/f",
                 ]
                 print("executing command: " + str(command))
@@ -129,7 +129,7 @@ def check():
                             "/tn",
                             "DesligamentoForaDoHorario",
                             "/ru",
-                            '"{username}"',
+                            f'"{username}"',
                             "/f",
                         ]
                     )
@@ -161,7 +161,7 @@ def agendar_desligar_fora_do_horario(desligar_fora_do_horario):
             "/st",
             f"{str(desligar_fora_do_horario.hour).zfill(2)}:{str(desligar_fora_do_horario.minute).zfill(2)}",
             "/ru",
-            '"{username}"',
+            f'"{username}"',
             "/f",
         ]
     )
