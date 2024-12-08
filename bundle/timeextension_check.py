@@ -87,7 +87,7 @@ def build_schedule():
                     "/tn",
                     item["nome"],
                     "/tr",
-                    "shutdown /f",
+                    "\"shutdown /f\"",
                     "/sc",
                     "weekly",
                     "/mo",
@@ -96,7 +96,7 @@ def build_schedule():
                     weekday_windows_sch_dict[dia_da_semana],
                     "/st",
                     f"{str(hora_fim.hour).zfill(2)}:{str(hora_fim.minute).zfill(2)}",
-                    f"/ru {username}",
+                    f"/ru \"{username}\"",
                     "/f",
                 ]
                 print("executing command: " + str(command))
@@ -127,7 +127,7 @@ def check():
                             "/delete",
                             "/tn",
                             "DesligamentoForaDoHorario",
-                            f"/ru {username}",
+                            f"/ru \"{username}\"",
                             "/f",
                         ]
                     )
@@ -153,12 +153,12 @@ def agendar_desligar_fora_do_horario(desligar_fora_do_horario):
             "/tn",
             "DesligamentoForaDoHorario",
             "/tr",
-            "shutdown /f",
+            "\"shutdown /f\"",
             "/sc",
             "ONCE",
             "/st",
             f"{str(desligar_fora_do_horario.hour).zfill(2)}:{str(desligar_fora_do_horario.minute).zfill(2)}",
-            f"/ru {username}",
+            f"/ru \"{username}\"",
             "/f",
         ]
     )
