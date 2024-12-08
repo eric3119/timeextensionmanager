@@ -8,8 +8,12 @@ from datetime import datetime, timedelta
 import time
 
 
-os.makedirs(path.expandvars("%APPDATA%\\TimeextensionData"), exist_ok=True)
-sendto_dir = path.expandvars("%APPDATA%\\TimeextensionData\\database.json")
+try:
+    os.makedirs(path.expandvars("%APPDATA%\\TimeextensionData"), exist_ok=True)
+    sendto_dir = path.expandvars("%APPDATA%\\TimeextensionData\\database.json")
+except Exception as e:
+    print(e)
+    sys.exit(1)
 
 weekday_dict = {
     0: "segunda",
@@ -162,11 +166,15 @@ def datetime_now():
 
 
 if __name__ == "__main__":
-    if sys.argv[1] == "fetch":
-        fetch()
-    elif sys.argv[1] == "check":
-        try:
+    try:
+        if sys.argv[1] == "fetch":
             fetch()
-        except Exception as e:
-            print(e)
-        check()
+        elif sys.argv[1] == "check":
+            try:
+                fetch()
+            except Exception as e:
+                print(e)
+            check()
+    except Exception as e:
+        print(e)
+        sys.exit(1)
