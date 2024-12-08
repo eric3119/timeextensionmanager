@@ -108,7 +108,7 @@ def check():
     hoje = datetime_now()
     hour, minute = (hoje.hour, hoje.minute)
     hora_base = datetime.strptime(f"{hour}:{minute}:00", "%H:%M:%S")
-    desligar_fora_do_horario = hora_base + timedelta(minutes=10)
+    desligar_fora_do_horario = hora_base + timedelta(seconds=10)
     day_of_week = weekday_dict[hoje.weekday()]
     with open(sendto_dir, "r") as f:
         timetable = json.loads(f.read())
@@ -145,7 +145,7 @@ def agendar_desligar_fora_do_horario(desligar_fora_do_horario):
         [
             "msg",
             "*",
-            f"Fora do horário estabelecido. Desligamento agendado para {str(desligar_fora_do_horario.hour).zfill(2)}:{str(desligar_fora_do_horario.minute).zfill(2)}",
+            f"Fora do horário estabelecido. Desligamento agendado para {str(desligar_fora_do_horario.hour).zfill(2)}:{str(desligar_fora_do_horario.minute).zfill(2)}:{str(desligar_fora_do_horario.second).zfill(2)}",
         ]
     )
     subprocess_run(
