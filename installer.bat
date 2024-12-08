@@ -1,5 +1,6 @@
 cd %HOMEPATH%
 mkdir timeextensionmanager
+del /q timeextensionmanager\*
 cd timeextensionmanager
 curl https://codeload.github.com/eric3119/timeextensionmanager/tar.gz/main -o timeextensionmanager.tar.gz
 tar -xvf timeextensionmanager.tar.gz
