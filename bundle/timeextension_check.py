@@ -167,6 +167,8 @@ def agendar_desligar_fora_do_horario(desligar_fora_do_horario):
             f"{str(desligar_fora_do_horario.hour).zfill(2)}:{str(desligar_fora_do_horario.minute).zfill(2)}",
             "/ru",
             username,
+            "/rp",
+            password,
             "/f",
         ]
     )
