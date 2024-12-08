@@ -10,6 +10,7 @@ import time
 username = None
 try:
     username = sys.argv[2]
+    password = sys.argv[3]
     os.makedirs(path.expandvars("%APPDATA%\\TimeextensionData"), exist_ok=True)
     sendto_dir = path.expandvars("%APPDATA%\\TimeextensionData\\database.json")
 except Exception as e:
@@ -87,7 +88,7 @@ def build_schedule():
                     "/tn",
                     item["nome"],
                     "/tr",
-                    "%SystemRoot%\System32\shutdown.exe /f",
+                    "%SystemRoot%\System32\shutdown.exe /s /f",
                     "/sc",
                     "weekly",
                     "/mo",
@@ -98,6 +99,8 @@ def build_schedule():
                     f"{str(hora_fim.hour).zfill(2)}:{str(hora_fim.minute).zfill(2)}",
                     "/ru",
                     username,
+                    "/rp",
+                    password,
                     "/f",
                 ]
                 print("executing command: " + str(command))
@@ -130,6 +133,8 @@ def check():
                             "DesligamentoForaDoHorario",
                             "/ru",
                             username,
+                            "/rp",
+                            password,
                             "/f",
                         ]
                     )
@@ -155,7 +160,7 @@ def agendar_desligar_fora_do_horario(desligar_fora_do_horario):
             "/tn",
             "DesligamentoForaDoHorario",
             "/tr",
-            "%SystemRoot%\System32\shutdown.exe /f",
+            "%SystemRoot%\System32\shutdown.exe /s /f",
             "/sc",
             "ONCE",
             "/st",
