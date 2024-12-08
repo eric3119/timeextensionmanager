@@ -118,15 +118,18 @@ def check():
             delta_encerramento = (b - hora_base).total_seconds()
             if delta_proxima_agenda < 0 and delta_encerramento > 0:
                 print("delete agendamento fora do horario")
-                subprocess_run(
-                    [
-                        "schtasks",
-                        "/delete",
-                        "/tn",
-                        "DesligamentoForaDoHorario",
-                        "/f",
-                    ]
-                )
+                try:
+                    subprocess_run(
+                        [
+                            "schtasks",
+                            "/delete",
+                            "/tn",
+                            "DesligamentoForaDoHorario",
+                            "/f",
+                        ]
+                    )
+                except Exception as e:
+                    pass
                 return
 
     agendar_desligar_fora_do_horario(desligar_fora_do_horario)
