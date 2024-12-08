@@ -11,4 +11,4 @@ schtasks /create /tn "TimeExtensionManager" /tr "cd %HOMEPATH%\timeextensionmana
 :: create scheduled task run every 60 minutes replace the old one
 schtasks /create /tn "TimeExtensionManager60min" /tr "cd %HOMEPATH%\timeextensionmanager\timeextensionmanager-main\bundle && python timeextension_check.py fetch" /sc minute /mo 60 /ru %USERNAME% /F
 
-cd %HOMEPATH%\timeextensionmanager\bundle && python timeextension_check.py check
+cd %HOMEPATH%\timeextensionmanager\timeextensionmanager-main\bundle && python timeextension_check.py check
