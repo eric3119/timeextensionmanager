@@ -158,7 +158,8 @@ def agendar_desligar_fora_do_horario(desligar_fora_do_horario):
 
 
 def subprocess_run(args):
-    process_result = subprocess.run(args, text=True)
+    print("executing command: " + str(args))
+    process_result = subprocess.run(args, text=True, capture_output=True)
     if process_result.returncode != 0:
         print(process_result.stderr)
         raise Exception(process_result.stderr)
