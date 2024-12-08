@@ -169,6 +169,4 @@ if __name__ == "__main__":
             fetch()
         except Exception as e:
             print(e)
-        # python delay for 60 seconds to ensure the file is written
-        time.sleep(60)
         check()
