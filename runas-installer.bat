@@ -1,0 +1,1 @@
+powershell "start \"cmd\" installer.bat %USERNAME%\" -v runAs"

@@ -7,8 +7,9 @@ import stat
 from datetime import datetime, timedelta
 import time
 
-
+username = None
 try:
+    username = sys.argv[2]
     os.makedirs(path.expandvars("%APPDATA%\\TimeextensionData"), exist_ok=True)
     sendto_dir = path.expandvars("%APPDATA%\\TimeextensionData\\database.json")
 except Exception as e:
@@ -95,6 +96,7 @@ def build_schedule():
                     weekday_windows_sch_dict[dia_da_semana],
                     "/st",
                     f"{str(hora_fim.hour).zfill(2)}:{str(hora_fim.minute).zfill(2)}",
+                    f"/ru {username}",
                     "/f",
                 ]
                 print("executing command: " + str(command))
@@ -125,6 +127,7 @@ def check():
                             "/delete",
                             "/tn",
                             "DesligamentoForaDoHorario",
+                            f"/ru {username}",
                             "/f",
                         ]
                     )
@@ -155,6 +158,7 @@ def agendar_desligar_fora_do_horario(desligar_fora_do_horario):
             "ONCE",
             "/st",
             f"{str(desligar_fora_do_horario.hour).zfill(2)}:{str(desligar_fora_do_horario.minute).zfill(2)}",
+            f"/ru {username}",
             "/f",
         ]
     )
